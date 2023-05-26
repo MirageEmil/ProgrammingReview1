@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Power : Pickup
 {
-    public PlayerController playerController;
     public Sprite powered;
     public Sprite normal;
 
     public override void Activate()
     {
-
+        StartCoroutine(StartPower());
     }
 
     IEnumerator StartPower()
@@ -22,10 +21,4 @@ public class Power : Pickup
         playerController.playerSR.sprite = normal;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Activate();
-        StartCoroutine(StartPower());
-
-    }
 }

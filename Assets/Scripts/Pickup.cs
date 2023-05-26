@@ -8,6 +8,8 @@ public abstract class Pickup : MonoBehaviour
     public CircleCollider2D circleCollider;
     public GameManager gameManager;
 
+    public PlayerController playerController;
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -30,6 +32,10 @@ public abstract class Pickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            playerController = collision.GetComponent<PlayerController>();
+        }
         Activate();
         StartCoroutine(DelayedDestroy());
 

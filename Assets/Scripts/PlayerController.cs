@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public Sprite normal;
 
     public GameManager gameManager;
-    public Power power;
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +43,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && power == null)
+        if (collision.gameObject.CompareTag("Enemy") && !isPowered)
         {
             StartCoroutine(HitTaken());
 
         }
-        else if (collision.gameObject.CompareTag("Enemy") && power != null)
+        else if (collision.gameObject.CompareTag("Enemy") && isPowered)
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 

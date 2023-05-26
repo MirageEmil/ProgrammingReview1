@@ -10,11 +10,4 @@ public class Points : Pickup
         gameManager.EarnPoints();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Activate();
-        }
-    }
 }
